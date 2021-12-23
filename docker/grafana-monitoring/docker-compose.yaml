@@ -35,5 +35,5 @@ services:
       - /rootfs:/:ro
       - /rootfs/sys:/sys:ro
       - /rootfs/etc:/etc:ro
-      - /rootfs/proc/proc:ro
+      - /rootfs/proc:/proc:ro
       - /run/udev:/run/udev:ro
