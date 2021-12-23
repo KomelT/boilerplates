@@ -23,5 +23,17 @@ services:
       - 8125:8125
       - 8092:8092/udp
       - 8094:8094
+    environment:
+      - HOST_PROC=/rootfs/proc
+      - HOST_SYS=/rootfs/sys
+      - HOST_ETC=/rootfs/etc
+      - HOST_MOUNT_PREFIX=/rootfs
     volumes:
       - /appdata/telegraf/:/etc/telegraf/
+      - /var/run/utmp:/var/run/utmp:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /rootfs:/:ro
+      - /rootfs/sys:/sys:ro
+      - /rootfs/etc:/etc:ro
+      - /rootfs/proc/proc:ro
+      - /run/udev:/run/udev:ro
