@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ "$EUID" -ne 0 ]
   then echo "Please run script as root or with sudo!"
   exit
@@ -10,7 +12,7 @@ mkdir /appdata/grafana
 mkdir /appdata/influxdb
 
 # Get Telegraf configuration file
-wget -O /appdata/telegraf https://raw.githubusercontent.com/influxdata/telegraf/master/etc/telegraf.conf
+wget -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/influxdata/telegraf/master/etc/telegraf.conf
 
 # Compose up the containers
 docker-compose up -d
