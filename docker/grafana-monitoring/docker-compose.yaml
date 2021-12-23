@@ -32,8 +32,8 @@ services:
       - /appdata/telegraf/:/etc/telegraf/
       - /var/run/utmp:/var/run/utmp:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /rootfs:/:ro
-      - /rootfs/sys:/sys:ro
-      - /rootfs/etc:/etc:ro
-      - /rootfs/proc:/proc:ro
+      - /:/rootfs:ro
+      - /sys:/rootfs/sys:ro
+      - /etc:/rootfs/etc:ro
+      - /proc:/rootfs/proc:ro
       - /run/udev:/run/udev:ro
