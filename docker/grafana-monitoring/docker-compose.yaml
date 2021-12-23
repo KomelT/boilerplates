@@ -1,0 +1,27 @@
+version: "3"
+volumes:
+  influxdb_data1:
+  influxdb_data2:
+services:
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - /appdata/grafana/grafana.ini:/usr/local/etc/grafana/grafana.ini
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb_data1:/etc/influxdb2
+      - influxdb_data2:/var/lib/influxdb2
+      - /appdata/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+  telegraf:
+    image: telegraf:latest
+    ports:
+      - 8125:8125
+      - 8092:8092/udp
+      - 8094:8094
+    volumes:
+      - /appdata/telegraf/:/etc/telegraf/
