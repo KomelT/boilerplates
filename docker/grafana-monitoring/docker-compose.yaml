@@ -28,6 +28,13 @@ services:
       - HOST_SYS=/rootfs/sys
       - HOST_ETC=/rootfs/etc
       - HOST_MOUNT_PREFIX=/rootfs
+      - GET_INTERVAL=10s
+      - SEND_INTERVAL=10s
+      - HOSTNAME=
+      - IDB_URL=http://127.0.0.1:8086
+      - IDB_TOKEN=
+      - IDB_ORGANIZATION=
+      - IDB_BUCKET=
     volumes:
       - /appdata/telegraf/:/etc/telegraf/
       - /var/run/utmp:/var/run/utmp:ro
