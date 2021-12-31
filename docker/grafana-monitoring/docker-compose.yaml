@@ -30,8 +30,8 @@ services:
       - HOST_MOUNT_PREFIX=/rootfs
       - GET_INTERVAL=10s
       - SEND_INTERVAL=10s
-      - HOSTNAME=
-      - IDB_URL=http://127.0.0.1:8086
+      - HOSTNAME=zeus
+      - IDB_URL=http://172.17.0.1:8086
       - IDB_TOKEN=
       - IDB_ORGANIZATION=
       - IDB_BUCKET=
