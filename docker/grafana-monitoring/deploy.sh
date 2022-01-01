@@ -12,7 +12,7 @@ mkdir /appdata/grafana
 mkdir /appdata/influxdb
 
 # Get Telegraf configuration file
-wget /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf
+wget -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf
 
 # Get Grafana configuration file
 wget -nc -O /appdata/grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini
