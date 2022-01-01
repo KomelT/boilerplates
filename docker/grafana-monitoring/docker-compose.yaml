@@ -33,8 +33,8 @@ services:
       - HOSTNAME=zeus
       - IDB_URL=http://172.17.0.1:8086
       - IDB_TOKEN=
-      - IDB_ORGANIZATION=Komelt.dev
-      - IDB_BUCKET=telegraf-data
+      - IDB_ORGANIZATION=
+      - IDB_BUCKET=
     volumes:
       - /appdata/telegraf/:/etc/telegraf/
       - /var/run/utmp:/var/run/utmp:ro
