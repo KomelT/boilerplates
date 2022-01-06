@@ -9,6 +9,7 @@ services:
       - 3000:3000
     volumes:
       - /appdata/grafana/:/etc/grafana
+    restart: always
   influxdb:
     image: influxdb:latest
     ports:
@@ -17,6 +18,7 @@ services:
       - influxdb_data1:/etc/influxdb2
       - influxdb_data2:/var/lib/influxdb2
       - /appdata/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+    restart: always
   telegraf:
     image: telegraf:latest
     ports:
@@ -44,3 +46,4 @@ services:
       - /etc:/rootfs/etc:ro
       - /proc:/rootfs/proc:ro
       - /run/udev:/run/udev:ro
+    restart: always
