@@ -9,13 +9,15 @@ fi
 mkdir /appdata
 mkdir /appdata/telegraf
 mkdir /appdata/grafana
+mkdir /appdata/grafana/etc-grafana
+mkdir /appdata/grafana/var-lib-grafana
 mkdir /appdata/influxdb
 
 # Get Telegraf configuration file
 wget -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf
 
 # Get Grafana configuration file
-wget -nc -O /appdata/grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini
+wget -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini
 
 # Compose up the containers
 docker-compose up -d

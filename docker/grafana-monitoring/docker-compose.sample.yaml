@@ -8,7 +8,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - /appdata/grafana/:/etc/grafana
+      - /appdata/grafana/etc-grafana:/etc/grafana
+      - /appdata/grafana/var-lib-grafana:/var/lib/grafana
     restart: always
   influxdb:
     image: influxdb:latest
