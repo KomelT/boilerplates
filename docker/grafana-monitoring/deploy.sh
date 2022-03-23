@@ -19,5 +19,8 @@ wget -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT
 # Get Grafana configuration file
 wget -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini
 
+# Create production docker-compose if it dows not exists yet
+cp -u docker-compose.sample.yaml docker-compose.yaml
+
 # Compose up the containers
 docker-compose up -d
