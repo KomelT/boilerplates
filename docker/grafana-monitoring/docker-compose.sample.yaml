@@ -8,14 +8,14 @@ services:
     ports:
       - 3000:3000
     environment:
-      - HOSTNAME=server.local
-      - GRAFANA_PUBLIC_URL=grafana.domain.com
+      - HOSTNAME=
+      - GRAFANA_PUBLIC_URL=https://grafana.domain.com
       - GRAFANA_SMTP_ENABLED=true
       - GRAFANA_SMTP_ADDRESS=mail.domain.local:587
-      - GRAFANA_SMTP_USER=email@domain.local
-      - GRAFANA_SMTP_PASSWORD=password
+      - GRAFANA_SMTP_USER=
+      - GRAFANA_SMTP_PASSWORD=
       - GRAFANA_SMTP_SKIP_VERIFY=false
-      - GRAFANA_SMTP_FROM_ADDRESS=mail@domain.local
+      - GRAFANA_SMTP_FROM_ADDRESS=
       - GRAFANA_SMTP_FROM_NAME=Grafana
       - GRAFANA_EMAIL_ON_SIGN_UP=true
     volumes:
@@ -26,6 +26,12 @@ services:
     image: influxdb:latest
     ports:
       - 8086:8086
+    environment:
+      - DOCKER_INFLUXDB_INIT_USERNAME=
+      - DOCKER_INFLUXDB_INIT_PASSWORD=
+      - DOCKER_INFLUXDB_INIT_ORG=
+      - DOCKER_INFLUXDB_INIT_BUCKET=
+      - DOCKER_INFLUXDB_INIT_RETENTION=
     volumes:
       - influxdb_data1:/etc/influxdb2
       - influxdb_data2:/var/lib/influxdb2
@@ -42,13 +48,13 @@ services:
       - HOST_SYS=/rootfs/sys
       - HOST_ETC=/rootfs/etc
       - HOST_MOUNT_PREFIX=/rootfs
-      - GET_INTERVAL=10s
-      - SEND_INTERVAL=10s
-      - HOSTNAME=zeus
-      - IDB_URL=http://172.17.0.1:8086
-      - IDB_TOKEN=
-      - IDB_ORGANIZATION=
-      - IDB_BUCKET=
+      - TELEGRAF_GET_INTERVAL=10s
+      - TELEGRAF_SEND_INTERVAL=10s
+      - TELEGRAF_HOSTNAME=zeus
+      - TELEGRAF_IDB_URL=grafana-monitoring_influxdb_1:8086
+      - TELEGRAF_IDB_TOKEN=
+      - TELEGRAF_IDB_ORGANIZATION=
+      - TELEGRAF_IDB_BUCKET=
     volumes:
       - /appdata/telegraf/:/etc/telegraf/
       - /var/run/utmp:/var/run/utmp:ro
