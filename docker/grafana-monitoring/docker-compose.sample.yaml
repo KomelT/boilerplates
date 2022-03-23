@@ -7,6 +7,17 @@ services:
     image: grafana/grafana:latest
     ports:
       - 3000:3000
+    environment:
+      - HOSTNAME=server.local
+      - GRAFANA_PUBLIC_URL=grafana.domain.com
+      - GRAFANA_SMTP_ENABLED=true
+      - GRAFANA_SMTP_ADDRESS=mail.domain.local:587
+      - GRAFANA_SMTP_USER=email@domain.local
+      - GRAFANA_SMTP_PASSWORD=password
+      - GRAFANA_SMTP_SKIP_VERIFY=false
+      - GRAFANA_SMTP_FROM_ADDRESS=mail@domain.local
+      - GRAFANA_SMTP_FROM_NAME=Grafana
+      - GRAFANA_EMAIL_ON_SIGN_UP=true
     volumes:
       - /appdata/grafana/etc-grafana:/etc/grafana
       - /appdata/grafana/var-lib-grafana:/var/lib/grafana
