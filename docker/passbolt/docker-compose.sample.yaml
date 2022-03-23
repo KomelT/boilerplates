@@ -7,7 +7,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: "true"
       MYSQL_DATABASE: "passbolt"
       MYSQL_USER: "passbolt"
-      MYSQL_PASSWORD: "P4ssb0lt"
+      MYSQL_PASSWORD: "password"
     volumes:
       - database_volume:/var/lib/mysql
 
@@ -20,16 +20,17 @@ services:
     depends_on:
       - db
     environment:
-      APP_FULL_BASE_URL: https://passbolt.local
+      APP_FULL_BASE_URL: https://passbolt.domain.local
       DATASOURCES_DEFAULT_HOST: "db"
       DATASOURCES_DEFAULT_USERNAME: "passbolt"
-      DATASOURCES_DEFAULT_PASSWORD: "P4ssb0lt"
+      DATASOURCES_DEFAULT_PASSWORD: "password"
       DATASOURCES_DEFAULT_DATABASE: "passbolt"
-      EMAIL_DEFAULT_FROM: "you@localhost"
-      EMAIL_TRANSPORT_DEFAULT_HOST: "mail.localhost"
-      EMAIL_TRANSPORT_DEFAULT_PORT: 25
-      EMAIL_TRANSPORT_DEFAULT_USERNAME: "you@localhost"
+      EMAIL_DEFAULT_FROM: "email@domain.local"
+      EMAIL_TRANSPORT_DEFAULT_HOST: "email@domain.local"
+      EMAIL_TRANSPORT_DEFAULT_PORT: 587
+      EMAIL_TRANSPORT_DEFAULT_USERNAME: "email@domain.local"
       EMAIL_TRANSPORT_DEFAULT_PASSWORD: "password"
+      EMAIL_TRANSPORT_DEFAULT_TLS: "true"
     volumes:
       - gpg_volume:/etc/passbolt/gpg
       - jwt_volume:/etc/passbolt/jwt
