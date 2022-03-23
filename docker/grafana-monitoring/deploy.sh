@@ -24,6 +24,8 @@ wget -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubuserconte
 cp -n nginx.conf /etc/nginx/sites-available/grafana-monitoring
 ln -s /etc/nginx/sites-available/grafana-monitoring /etc/nginx/sites-enabled/grafana-monitoring
 
+echo ""
+echo ""
 echo "Edit 'server_name' in Nginx configuration: 'sudo nano /etc/nginx/sites-enabled/grafana-monitoring'."
 echo "When you done do 'sudo nginx -t' if comand ends with success run 'sudo service nginx restart'."
 echo "Then create 'docker-compose.yaml' file from 'docker-compose.sample.yaml' fill all ENV and then run 'docker-compose up -d'"
