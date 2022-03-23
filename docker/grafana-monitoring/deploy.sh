@@ -22,5 +22,9 @@ wget -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubuserconte
 # Create production docker-compose if it dows not exists yet
 cp -u docker-compose.sample.yaml docker-compose.yaml
 
+cp -u nginx.conf /etc/nginx/sites-available/grafana-monitoring
+ln -s /etc/nginx/sites-available/grafana-monitoring /etc/nginx/sites-enabled/grafana-monitoring
+nginx -t && service nginx restart && echo "Nginx OK"
+
 # Compose up the containers
 docker-compose up -d
