@@ -44,16 +44,20 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo ""
+
 # Get Telegraf configuration file
-wget -q -nc -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf && echo "Configuration file for Grafana downloaded successfully!"
+wget -nc -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf && echo "Configuration file for Grafana downloaded successfully!"
 
 if [ $? -ne 0 ]; then
     echo "Exitting because of error!"
     exit 1
 fi
 
+echo ""
+
 # Get Grafana configuration file
-wget -q -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini && echo "Configuration file for Telegraf downloaded successfully!"
+wget -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini && echo "Configuration file for Telegraf downloaded successfully!"
 
 if [ $? -ne 0 ]; then
     echo "Exitting because of error!"
