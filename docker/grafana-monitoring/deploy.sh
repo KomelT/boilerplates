@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo ""
+echo ""
+
 if [ "$EUID" -ne 0 ]
   then echo "Please run script as root or with sudo!"
   exit
@@ -42,7 +45,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Get Telegraf configuration file
-wget -nc -O -q /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf && echo "Configuration file for Grafana downloaded successfully!"
+wget -q -nc -O /appdata/telegraf/telegraf.conf https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/telegraf.conf && echo "Configuration file for Grafana downloaded successfully!"
 
 if [ $? -ne 0 ]; then
     echo "Exitting because of error!"
@@ -50,7 +53,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Get Grafana configuration file
-wget -nc -O -q /appdata/grafana/etc-grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini && echo "Configuration file for Telegraf downloaded successfully!"
+wget -q -nc -O /appdata/grafana/etc-grafana/grafana.ini https://raw.githubusercontent.com/KomelT/boilerplates/master/docker/grafana-monitoring/conf/grafana.ini && echo "Configuration file for Telegraf downloaded successfully!"
 
 if [ $? -ne 0 ]; then
     echo "Exitting because of error!"
