@@ -10,7 +10,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Ljubljana
-      - SERVERURL=zeus.komelt-net.com
+      - SERVERURL=sub.domain.local
       - SERVERPORT=51820
       - PEERS=1
       - PEERDNS=auto
