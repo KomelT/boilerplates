@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+
+  minio:
+    image: minio/minio
+    restart: unless-stopped
+    command: server --console-address ":9001" /data
+    volumes:
+     - /data/s3-storage/minio/data:/data
+    env_file:
+      - .env
+    ports:
+     - 9000:9000
+     - 9001:9001
