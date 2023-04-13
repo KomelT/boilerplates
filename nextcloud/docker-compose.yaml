@@ -1,29 +1,23 @@
 version: '2'
-volumes:
-  db:
+
 services:
-  db:
+  mariadb:
     image: mariadb:latest
     restart: always
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
-      - db:/var/lib/mysql
-    environment:
-      - MARIADB_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_PASSWORD=MySUP3Rs3cREtP@SsWorD1239856
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-  app:
+      - /data/${STACK_NAME}/mariadb/data:/var/lib/mysql
+    env_file:
+      - .env
+  nextcloud:
     image: nextcloud
     restart: always
     ports:
-      - 8082:80
-    links:
-      - db
+      - 8080:80
+    depends_on:
+      - mariadb
     volumes:
-      - /appdata/nextcloud:/var/www/html
-    environment:
-      - MYSQL_PASSWORD=MySUP3Rs3cREtP@SsWorD1239856
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - MYSQL_HOST=db
+      - /data/${STACK_NAME}/nextcloud/html:/var/www/html
+      - /data/${STACK_NAME}/nextcloud/data:/var/www/html/data
+    env_file:
+      - .env
